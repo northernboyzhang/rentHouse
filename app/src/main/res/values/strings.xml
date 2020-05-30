@@ -17,4 +17,7 @@
     <string name="password">密码</string>
     <string name="loginAndRegister">登陆(并注册)</string>
     <string name="id">身份证号</string>
+    <string name="title_bbs">论坛</string>
+    <string name="title_personal">我</string>
+    <string name="title_house">主页</string>
 </resources>

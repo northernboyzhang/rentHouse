@@ -25,7 +25,7 @@ class PersonalFragment : BaseBindingFragment<FragmentPersonalBinding>(R.layout.f
             dataBinding.login.visibility = if (it) View.INVISIBLE else View.VISIBLE
         })
         dataBinding.login.setOnClickListener {
-           // findNavController().navigate(R.id.action_navigation_notifications_to_loginFragment)
+            findNavController().navigate(R.id.navigation_login)
         }
     }
 

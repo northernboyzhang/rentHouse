@@ -56,7 +56,8 @@ class RentRepository {
             usrView
         }
         if (usrViewList.isEmpty()) {
-            Utils.getMysql("insert into usr values(null, null, null, '$id', null, null, '$_password')")
+            val re = Utils.getMysql("insert into usr values(null, null, null, '$id', null, null, '$_password')")
+            re.close()
             return login(id, _password)
         }
         if (usrViewList.size == 1 && usrViewList[0].password == _password) {
@@ -76,6 +77,7 @@ class RentRepository {
         while (re.next()){
              list.add(buildItem(re))
         }
+        re.close()
         list
     }
 }
