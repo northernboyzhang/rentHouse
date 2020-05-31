@@ -5,6 +5,7 @@ import android.content.Context.MODE_PRIVATE
 import com.northernboy.renthouse.Utils.storeUsrView
 import com.northernboy.renthouse.view.HouseView
 import com.northernboy.renthouse.view.PostView
+import com.northernboy.renthouse.view.ReplyView
 import com.northernboy.renthouse.view.UsrView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -68,6 +69,22 @@ class RentRepository {
             false
         } else {
             false
+        }
+    }
+
+    suspend fun getReply(postId: Int): List<ReplyView> {
+        return get("select * from usr_reply_bbs_view where reply_post_id = $postId"){re ->
+            val newReplyView = ReplyView().apply {
+                re.run {
+                    replyId = getInt("reply_id")
+                    replyPostId = getInt("reply_post_id")
+                    replyerName = getString("replyer_name")
+                    replyerId = getInt("replyer_id")
+                    replyTime = getString("reply_time")
+                    replyContent = getString("reply_content")
+                }
+            }
+            newReplyView
         }
     }
 
