@@ -35,6 +35,7 @@ class RentRepository {
                     postDate = getString("post_date")
                     postTheme = getString("post_theme")
                     postId = getInt("post_id")
+                    postAuthorName = getString("post_author_name")
                 }
             }
             newPostView
@@ -69,7 +70,6 @@ class RentRepository {
             false
         }
     }
-
 
     private suspend fun <T> get(query: String, buildItem: (re: ResultSet)-> T): List<T> {
         val re = Utils.getMysql(query)

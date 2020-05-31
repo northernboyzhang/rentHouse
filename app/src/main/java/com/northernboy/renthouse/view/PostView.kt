@@ -5,4 +5,5 @@ class PostView : BaseView(){
     var postTheme: String? = null
     var postDate: String? = null
     var postAuthorId:Int? = null
+    var postAuthorName: String? = null
 }
