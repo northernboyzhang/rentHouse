@@ -27,6 +27,9 @@ class PersonalFragment : BaseBindingFragment<FragmentPersonalBinding>(R.layout.f
         dataBinding.login.setOnClickListener {
             findNavController().navigate(R.id.navigation_login)
         }
+        dataBinding.logout.root.setOnClickListener {
+            usrViewModel.logout()
+        }
     }
 
     private fun setFunc() {

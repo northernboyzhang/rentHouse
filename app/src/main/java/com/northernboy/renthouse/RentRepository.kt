@@ -70,6 +70,7 @@ class RentRepository {
         }
     }
 
+
     private suspend fun <T> get(query: String, buildItem: (re: ResultSet)-> T): List<T> {
         val re = Utils.getMysql(query)
         val list = mutableListOf<T>()

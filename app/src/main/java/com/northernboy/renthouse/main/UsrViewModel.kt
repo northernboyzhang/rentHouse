@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.northernboy.renthouse.RentRepository
 import com.northernboy.renthouse.Utils.getUsrView
+import com.northernboy.renthouse.Utils.storeUsrView
 import com.northernboy.renthouse.view.UsrView
 import kotlinx.coroutines.launch
 
@@ -21,5 +22,9 @@ class UsrViewModel : ViewModel() {
         viewModelScope.launch {
             isLogin.value = RentRepository().login(id, password)
         }
+    }
+    fun logout(){
+        storeUsrView(null)
+        isLogin.value = false
     }
 }
