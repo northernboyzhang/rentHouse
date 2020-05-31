@@ -9,6 +9,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.northernboy.renthouse.R
+import com.northernboy.renthouse.Utils
 import com.northernboy.renthouse.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -35,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
     }
 
 }

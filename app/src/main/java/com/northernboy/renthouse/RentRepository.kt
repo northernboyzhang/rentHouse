@@ -2,6 +2,7 @@ package com.northernboy.renthouse
 
 import android.app.Application
 import android.content.Context.MODE_PRIVATE
+import com.northernboy.renthouse.Utils.storeUsrView
 import com.northernboy.renthouse.view.HouseView
 import com.northernboy.renthouse.view.PostView
 import com.northernboy.renthouse.view.UsrView
@@ -56,28 +57,26 @@ class RentRepository {
             usrView
         }
         if (usrViewList.isEmpty()) {
-            val re = Utils.getMysql("insert into usr values(null, null, null, '$id', null, null, '$_password')")
-            re.close()
+            Utils.changeMysql("insert into usr value(null, null, null, '$id', null, null, '$_password')")
             return login(id, _password)
         }
-        if (usrViewList.size == 1 && usrViewList[0].password == _password) {
-            val sharedPre = Application().getSharedPreferences("Usr", MODE_PRIVATE)
-            sharedPre.edit().putString("Usr", usrViewList[0].toString()).apply()
-            return true
+        return if (usrViewList.size == 1 && usrViewList[0].password == _password) {
+            storeUsrView(usrViewList[0])
+            true
         } else if (usrViewList.size == 1 && usrViewList[0].password != _password) {
-            return false
+            false
         } else {
-            return false
+            false
         }
     }
 
-    private suspend fun <T> get(query: String, buildItem: (re: ResultSet)-> T): List<T> = withContext(Dispatchers.IO) {
+    private suspend fun <T> get(query: String, buildItem: (re: ResultSet)-> T): List<T> {
         val re = Utils.getMysql(query)
         val list = mutableListOf<T>()
         while (re.next()){
              list.add(buildItem(re))
         }
         re.close()
-        list
+        return list
     }
 }
