@@ -38,7 +38,7 @@ object Utils {
         execute(stmt, query)
     }
 
-    fun getUsrView(): UsrView{
+    fun getUsrView(): UsrView?{
         return Gson().fromJson(RentHouseApplication.context.getSharedPreferences("Usr", MODE_PRIVATE).getString("Usr", null), UsrView::class.java)
     }
 

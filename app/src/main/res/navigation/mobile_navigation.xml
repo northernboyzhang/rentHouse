@@ -15,11 +15,15 @@
         android:id="@+id/navigation_bbs"
         android:name="com.northernboy.renthouse.ui.bbs.BbsFragment"
         android:label="@string/title_bbs"
-        tools:layout="@layout/fragment_bbs" />
+        tools:layout="@layout/fragment_bbs" >
+        <action
+            android:id="@+id/action_navigation_bbs_to_replyFragment"
+            app:destination="@id/navigation_reply" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_personal"
-        android:name="com.northernboy.renthouse.ui.notifications.PersonalFragment"
+        android:name="com.northernboy.renthouse.ui.personal.PersonalFragment"
         android:label="@string/title_personal"
         tools:layout="@layout/fragment_personal">
         <action
@@ -30,4 +34,12 @@
         android:id="@+id/navigation_login"
         android:name="com.northernboy.renthouse.ui.LoginFragment"
         android:label="LoginFragment" />
+    <fragment
+        android:id="@+id/navigation_reply"
+        android:name="com.northernboy.renthouse.ui.bbs.ReplyFragment"
+        android:label="@string/manage_post">
+        <argument
+            android:name="PostView"
+            app:argType="string" />
+    </fragment>
 </navigation>

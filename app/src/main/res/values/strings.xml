@@ -20,4 +20,8 @@
     <string name="title_bbs">论坛</string>
     <string name="title_personal">我</string>
     <string name="title_house">主页</string>
+    <string name="house_type">户型</string>
+    <string name="最大居住人数" />
+    <string name="house_max">最大居住人数</string>
+    <string name="rent">租金</string>
 </resources>

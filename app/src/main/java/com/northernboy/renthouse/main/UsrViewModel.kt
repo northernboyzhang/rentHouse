@@ -10,10 +10,10 @@ import com.northernboy.renthouse.view.UsrView
 import kotlinx.coroutines.launch
 
 class UsrViewModel : ViewModel() {
-    var usrView = UsrView()
+    private var usrView = UsrView()
     var isLogin = MutableLiveData(false)
     init {
-        usrView = getUsrView()
+        usrView = getUsrView()?:UsrView()
         if(usrView.identityNo != null && usrView.password != null){
             login(usrView.identityNo!! , usrView.password!!)
         }
