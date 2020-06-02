@@ -6,6 +6,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.gson.Gson
 
@@ -50,6 +51,12 @@ class OrderFragment : BaseBindingFragment<OrderFragmentBinding>(R.layout.order_f
             dataBinding.orderUsrName.text = getString(R.string.order_usr_name, it.name)
         })
 
+        dataBinding.orderPlace.setOnClickListener {
+            usrViewModel.usrView.value?.usrId?.let { it1 ->
+                orderViewModel.placeOrder(it1)
+                findNavController().navigateUp()
+            }
+        }
         setupSpinner()
     }
 
@@ -72,11 +79,8 @@ class OrderFragment : BaseBindingFragment<OrderFragmentBinding>(R.layout.order_f
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         val a = parent?.getItemAtPosition(position) as String
-        val rent = orderViewModel.houseView.value?.houseRent?:0 as Float
-        val month = a.toInt()
-        dataBinding.orderTotalRent.text = getString(R.string.order_total_rent, (month.times(rent)).toString())
-
-
+        orderViewModel.month = a.toInt()
+        dataBinding.orderTotalRent.text = getString(R.string.order_total_rent, orderViewModel.calculate().toString())
     }
 }
 

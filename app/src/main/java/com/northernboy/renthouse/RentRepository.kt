@@ -88,6 +88,10 @@ class RentRepository {
         }
     }
 
+    suspend fun placeOrder(month: Int, renter_id: Int, house_id: Int ) {
+        Utils.changeMysql("insert into rent_order value(null, $renter_id, $house_id, $month, now())")
+    }
+
     private suspend fun <T> get(query: String, buildItem: (re: ResultSet)-> T): List<T> {
         val re = Utils.getMysql(query)
         val list = mutableListOf<T>()
