@@ -1,9 +1,13 @@
 package com.northernboy.renthouse.ui.home
 
+import android.app.Dialog
+import android.view.Gravity
 import android.view.View
 import android.widget.Adapter
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -52,9 +56,18 @@ class OrderFragment : BaseBindingFragment<OrderFragmentBinding>(R.layout.order_f
         })
 
         dataBinding.orderPlace.setOnClickListener {
-            usrViewModel.usrView.value?.usrId?.let { it1 ->
-                orderViewModel.placeOrder(it1)
-                findNavController().navigateUp()
+            if(usrViewModel.usrView.value?.usrId == null){
+                Toast.makeText(requireContext(), "订购失败，请登陆", Toast.LENGTH_LONG).apply {
+                    setGravity(Gravity.CENTER,0,0)
+                }.show()
+            }else{
+                usrViewModel.usrView.value?.usrId?.let { it1 ->
+                    orderViewModel.placeOrder(it1)
+                    Toast.makeText(requireContext(), "订购成功！", Toast.LENGTH_LONG).apply {
+                        setGravity(Gravity.CENTER,0,0)
+                    }.show()
+                    findNavController().navigateUp()
+                }
             }
         }
         setupSpinner()
