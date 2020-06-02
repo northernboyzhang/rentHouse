@@ -1,5 +1,6 @@
 package com.northernboy.renthouse.ui.home
 
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
@@ -8,6 +9,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.northernboy.renthouse.R
+import com.northernboy.renthouse.Utils.centerToast
+import com.northernboy.renthouse.Utils.getUsrView
 import com.northernboy.renthouse.Utils.rentLog
 import com.northernboy.renthouse.base.BaseBindingFragment
 import com.northernboy.renthouse.base.NViewAdapter
@@ -25,7 +28,15 @@ class HomeFragment : BaseBindingFragment<FragmentHomeBinding>(R.layout.fragment_
 
     override fun subscribe(){
         dataBinding.recyclerHouseView.apply {
-            adapter = HouseViewAdapter()
+            adapter = HouseViewAdapter{houseId ->
+                val usrView = getUsrView()
+                if(usrView?.usrId != null){
+                    homeViewModel.reserve(houseId, usrView.usrId!!)
+                    centerToast(context, "预约已发送")
+                }else{
+                    centerToast(context, "请先登录")
+                }
+            }
             layoutManager = LinearLayoutManager(context)
         }
         val adapter = dataBinding.recyclerHouseView.adapter as HouseViewAdapter
@@ -36,14 +47,16 @@ class HomeFragment : BaseBindingFragment<FragmentHomeBinding>(R.layout.fragment_
     }
 }
 
-class HouseViewAdapter : NViewAdapter<HouseView>(DiffCallBack()){
+class HouseViewAdapter(val reserve:(houseId: Int) -> Unit) : NViewAdapter<HouseView>(DiffCallBack()){
 
     override fun touchEvent(binding: ViewDataBinding) {
         val houseViewDataBinding = binding as HouseViewBinding
-        houseViewDataBinding.imageView.setOnClickListener {
-
+        houseViewDataBinding.order.setOnClickListener {
             val action = HomeFragmentDirections.actionNavigationHomeToOrderFragment(Gson().toJson(houseViewDataBinding.item))
             houseViewDataBinding.root.findNavController().navigate(action)
+        }
+        houseViewDataBinding.reserve.setOnClickListener {
+            houseViewDataBinding.item?.houseId?.let { houseId -> reserve(houseId) }
         }
     }
 

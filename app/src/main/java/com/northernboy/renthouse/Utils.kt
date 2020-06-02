@@ -1,6 +1,9 @@
 package com.northernboy.renthouse
+import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.util.Log
+import android.view.Gravity
+import android.widget.Toast
 import com.google.gson.Gson
 import com.northernboy.renthouse.view.UsrView
 import kotlinx.coroutines.Dispatchers
@@ -46,4 +49,9 @@ object Utils {
         RentHouseApplication.context.getSharedPreferences("Usr", MODE_PRIVATE).edit().putString("Usr", Gson().toJson(usrView)).apply()
     }
 
+    fun centerToast(context: Context, info: String){
+        Toast.makeText(context, info, Toast.LENGTH_SHORT).apply {
+            setGravity(Gravity.CENTER, 0, 0)
+        }.show()
+    }
 }

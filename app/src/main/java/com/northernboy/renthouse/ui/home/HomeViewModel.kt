@@ -15,4 +15,10 @@ class HomeViewModel : ViewModel() {
             RentRepository().getHouse()
         }
     }
+
+    fun reserve(houseId: Int, renterId: Int){
+        viewModelScope.launch {
+            RentRepository().reserve(houseId, renterId)
+        }
+    }
 }

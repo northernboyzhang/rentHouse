@@ -1,14 +1,10 @@
 package com.northernboy.renthouse
 
-import android.app.Application
-import android.content.Context.MODE_PRIVATE
 import com.northernboy.renthouse.Utils.storeUsrView
 import com.northernboy.renthouse.view.HouseView
 import com.northernboy.renthouse.view.PostView
 import com.northernboy.renthouse.view.ReplyView
 import com.northernboy.renthouse.view.UsrView
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import java.sql.ResultSet
 
 class RentRepository {
@@ -88,10 +84,13 @@ class RentRepository {
         }
     }
 
-    suspend fun placeOrder(month: Int, renter_id: Int, house_id: Int ) {
-        Utils.changeMysql("insert into rent_order value(null, $renter_id, $house_id, $month, now())")
+    suspend fun placeOrder(month: Int, renterId: Int, houseId: Int ) {
+        Utils.changeMysql("insert into rent_order value(null, $renterId, $houseId, $month, now())")
     }
 
+    suspend fun reserve(houseId: Int, renterId: Int){
+        Utils.changeMysql("insert into reserve value($renterId, $houseId, now(), FALSE)")
+    }
     private suspend fun <T> get(query: String, buildItem: (re: ResultSet)-> T): List<T> {
         val re = Utils.getMysql(query)
         val list = mutableListOf<T>()
