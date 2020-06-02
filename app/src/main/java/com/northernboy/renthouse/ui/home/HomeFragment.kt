@@ -4,12 +4,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import com.northernboy.renthouse.R
 import com.northernboy.renthouse.Utils.rentLog
 import com.northernboy.renthouse.base.BaseBindingFragment
 import com.northernboy.renthouse.base.NViewAdapter
 import com.northernboy.renthouse.databinding.FragmentHomeBinding
+import com.northernboy.renthouse.databinding.HouseViewBinding
 import com.northernboy.renthouse.view.HouseView
 
 class HomeFragment : BaseBindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
@@ -36,7 +39,12 @@ class HomeFragment : BaseBindingFragment<FragmentHomeBinding>(R.layout.fragment_
 class HouseViewAdapter : NViewAdapter<HouseView>(DiffCallBack()){
 
     override fun touchEvent(binding: ViewDataBinding) {
+        val houseViewDataBinding = binding as HouseViewBinding
+        houseViewDataBinding.imageView.setOnClickListener {
 
+            val action = HomeFragmentDirections.actionNavigationHomeToOrderFragment(Gson().toJson(houseViewDataBinding.item))
+            houseViewDataBinding.root.findNavController().navigate(action)
+        }
     }
 
     override fun getItemViewType(position: Int): Int {

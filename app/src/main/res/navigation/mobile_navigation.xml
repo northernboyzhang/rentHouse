@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.northernboy.renthouse.ui.home.HomeFragment"
         android:label="@string/title_house"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_orderFragment"
+            app:destination="@id/navigation_order" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_bbs"
@@ -40,6 +44,14 @@
         android:label="@string/manage_post">
         <argument
             android:name="PostView"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_order"
+        android:name="com.northernboy.renthouse.ui.home.OrderFragment"
+        android:label="@string/order_confirm" >
+        <argument
+            android:name="houseView"
             app:argType="string" />
     </fragment>
 </navigation>
