@@ -1,5 +1,6 @@
 package com.northernboy.renthouse
 
+import com.northernboy.renthouse.Utils.rentLog
 import com.northernboy.renthouse.Utils.storeUsrView
 import com.northernboy.renthouse.view.HouseView
 import com.northernboy.renthouse.view.PostView
@@ -82,6 +83,11 @@ class RentRepository {
             }
             newReplyView
         }
+    }
+
+    suspend fun reply(content: String, replyerId: Int, postId: Int){
+        rentLog("insert into reply value(null, '$content', now(), $replyerId, $postId)")
+        Utils.changeMysql("insert into reply value(null, '$content'Fins, now(), $replyerId, $postId)")
     }
 
     suspend fun placeOrder(month: Int, renterId: Int, houseId: Int ) {

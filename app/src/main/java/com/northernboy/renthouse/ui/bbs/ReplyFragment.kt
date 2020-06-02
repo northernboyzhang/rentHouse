@@ -23,7 +23,7 @@ import com.northernboy.renthouse.view.ReplyView
 class ReplyFragment : BaseBindingFragment<FragmentReplyBinding>(R.layout.fragment_reply) {
 
     private val args : ReplyFragmentArgs by navArgs()
-    lateinit var replyViewModel : ReplyViewModel
+    private lateinit var replyViewModel : ReplyViewModel
 
     override fun initViewModel() {
         replyViewModel = ViewModelProvider(this).get(ReplyViewModel::class.java)
@@ -44,6 +44,10 @@ class ReplyFragment : BaseBindingFragment<FragmentReplyBinding>(R.layout.fragmen
         replyViewModel.replyViewList.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })
+
+        dataBinding.reply.setOnClickListener {
+            replyViewModel.reply(dataBinding.replyInput.text.toString(), replyViewModel.postView.value?.postId!!)
+        }
     }
 }
 class ReplyViewAdapter: NViewAdapter<ReplyView>(DiffCallBack()){

@@ -36,6 +36,7 @@
     <string name="order_usr_phone">电话：%1$s</string>
     <string name="order_usr_name">姓名：%1$s</string>
     <string name="order_total_rent">%1$s元</string>
+    <string name="reply">回复</string>
 
 
 </resources>
