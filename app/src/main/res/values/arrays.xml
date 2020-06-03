@@ -14,4 +14,9 @@
         <item>11</item>
         <item>12</item>
     </string-array>
+
+    <string-array name="gender">
+        <item>@string/male</item>
+        <item>@string/female</item>
+    </string-array>
 </resources>

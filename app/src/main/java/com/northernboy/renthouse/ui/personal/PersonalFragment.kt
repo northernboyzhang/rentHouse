@@ -30,12 +30,16 @@ class PersonalFragment : BaseBindingFragment<FragmentPersonalBinding>(R.layout.f
         dataBinding.logout.root.setOnClickListener {
             usrViewModel.logout()
         }
+       dataBinding.registerInformation.root.setOnClickListener {
+
+           findNavController().navigate(R.id.navigation_register)
+       }
     }
 
     private fun setFunc() {
         dataBinding.apply {
-            confirmId.apply {
-                funcName = getString(R.string.confirm_id)
+            registerInformation.apply {
+                funcName = getString(R.string.register_update)
             }
             manageOwnHouse.funcName = getString(R.string.manage_own_house)
             manageRentHouse.funcName = getString(R.string.manage_rent_house)

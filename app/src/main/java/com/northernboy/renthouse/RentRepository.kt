@@ -41,7 +41,7 @@ class RentRepository {
     }
 
     suspend fun login(id: String, _password: String): Boolean {
-        val usrViewList = get<UsrView>("select * from usr where identity_no = '$id'") { re ->
+        val usrViewList = get("select * from usr where identity_no = '$id'") { re ->
             val usrView = UsrView().apply {
                 re.run {
                     usrId = re.getInt("usr_id")
@@ -53,6 +53,7 @@ class RentRepository {
                     password = re.getString("password")
                 }
             }
+            rentLog(usrView.toString())
             usrView
         }
         if (usrViewList.isEmpty()) {
@@ -96,6 +97,10 @@ class RentRepository {
 
     suspend fun reserve(houseId: Int, renterId: Int){
         Utils.changeMysql("insert into reserve value($renterId, $houseId, now(), FALSE)")
+    }
+
+    suspend fun registerID(name: String, usrAddress: String, gender: Int, phone: String, usrId: Int){
+        Utils.changeMysql("Update usr set name='$name', usr_address='$usrAddress', gender= $gender, phone='$phone' where usr_id='$usrId'")
     }
     private suspend fun <T> get(query: String, buildItem: (re: ResultSet)-> T): List<T> {
         val re = Utils.getMysql(query)

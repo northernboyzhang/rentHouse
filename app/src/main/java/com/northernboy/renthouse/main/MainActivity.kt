@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.northernboy.renthouse.R
 import com.northernboy.renthouse.Utils
+import com.northernboy.renthouse.Utils.getUsrView
 import com.northernboy.renthouse.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -36,6 +37,16 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, _, _ ->
+            getUsrView()?.let {
+                it.identityNo?.let {  id ->
+                    it.password?.let { it1 -> usrViewModel.login(id, it1) }
+                }
+
+            }
+        }
     }
+
 
 }

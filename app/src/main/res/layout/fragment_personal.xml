@@ -58,7 +58,7 @@
 
 
         <include
-            android:id="@+id/confirm_id"
+            android:id="@+id/register_information"
             layout="@layout/function" />
 
         <include

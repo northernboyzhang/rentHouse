@@ -36,7 +36,22 @@
     <string name="order_usr_phone">电话：%1$s</string>
     <string name="order_usr_name">姓名：%1$s</string>
     <string name="order_total_rent">%1$s元</string>
+    <!-- Reply -->
     <string name="reply">回复</string>
+    
+    <!-- Register-->
+    <string name="register_update">登记修改</string>
+    <string name="register_identity_no">身份证号</string>
+    <string name="register_name">姓名</string>
+    <string name="register_usr_address">地址</string>
+    <string name="register_gender">性别</string>
+    <string name="register_phone">电话号码</string>
+    <string name="register_password">密码</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
 
 
+    <!-- warn -->
+    <string name="warn_login_first">请先登陆</string>
+    <string name="warn_id_password_not_null">身份证号和密码不能为空</string>
 </resources>
