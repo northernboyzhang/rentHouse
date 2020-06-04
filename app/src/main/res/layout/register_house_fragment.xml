@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.registerHouse.RegisterHouseFragment">
+
+        <include
+            android:id="@+id/register_house_address"
+            layout="@layout/input" />
+
+        <include
+            android:id="@+id/register_house_type"
+            layout="@layout/input" />
+
+        <include
+            android:id="@+id/register_house_rent"
+            layout="@layout/input" />
+
+        <include
+            android:id="@+id/register_capacity"
+            layout="@layout/input_spinner" />
+
+        <Button
+            android:id="@+id/register_house_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/register_house_confirm" />
+
+    </LinearLayout>
+</layout>

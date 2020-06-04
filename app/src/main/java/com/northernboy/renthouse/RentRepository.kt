@@ -88,7 +88,7 @@ class RentRepository {
 
     suspend fun reply(content: String, replyerId: Int, postId: Int){
         rentLog("insert into reply value(null, '$content', now(), $replyerId, $postId)")
-        Utils.changeMysql("insert into reply value(null, '$content'Fins, now(), $replyerId, $postId)")
+        Utils.changeMysql("insert into reply value(null, '$content', now(), $replyerId, $postId)")
     }
 
     suspend fun placeOrder(month: Int, renterId: Int, houseId: Int ) {
@@ -101,6 +101,11 @@ class RentRepository {
 
     suspend fun registerID(name: String, usrAddress: String, gender: Int, phone: String, usrId: Int){
         Utils.changeMysql("Update usr set name='$name', usr_address='$usrAddress', gender= $gender, phone='$phone' where usr_id='$usrId'")
+    }
+
+    suspend fun registerHouse(ownerId: Int, houseAddress: String, type: String, capacity: Int, rent: Float){
+        rentLog("insert into house value(null, owner_id = $ownerId, house_address = '$houseAddress', type = '$type', capacity = $capacity, rent = $rent, status = TRUE, onShelve = TRUE)")
+        Utils.changeMysql("insert into house value(null,$ownerId, '$houseAddress', '$type', $capacity, $rent, TRUE, TRUE)")
     }
     private suspend fun <T> get(query: String, buildItem: (re: ResultSet)-> T): List<T> {
         val re = Utils.getMysql(query)

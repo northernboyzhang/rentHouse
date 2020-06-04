@@ -15,6 +15,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.gson.Gson
 
 import com.northernboy.renthouse.R
+import com.northernboy.renthouse.Utils.getUsrView
 import com.northernboy.renthouse.Utils.rentLog
 import com.northernboy.renthouse.base.BaseBindingFragment
 import com.northernboy.renthouse.databinding.OrderFragmentBinding
@@ -25,11 +26,9 @@ import kotlinx.android.synthetic.main.item_info.view.*
 class OrderFragment : BaseBindingFragment<OrderFragmentBinding>(R.layout.order_fragment), AdapterView.OnItemSelectedListener {
 
     private val args : OrderFragmentArgs by navArgs()
-    private lateinit var usrViewModel: UsrViewModel
     private lateinit var orderViewModel: OrderViewModel
 
     override fun initViewModel() {
-        usrViewModel = ViewModelProvider(requireActivity()).get(UsrViewModel::class.java)
         orderViewModel = ViewModelProvider(this).get(OrderViewModel::class.java)
         orderViewModel.houseView.value = Gson().fromJson(args.houseView, HouseView::class.java)
     }
@@ -49,19 +48,18 @@ class OrderFragment : BaseBindingFragment<OrderFragmentBinding>(R.layout.order_f
             }
         })
 
-        usrViewModel.usrView.observe(viewLifecycleOwner, Observer {
-            rentLog(it.toString() + "Order")
-            dataBinding.orderUsrPhone.text = getString(R.string.order_usr_phone, it.phone)
-            dataBinding.orderUsrName.text = getString(R.string.order_usr_name, it.name)
-        })
+        val usrView = getUsrView()
+        dataBinding.orderUsrPhone.text = getString(R.string.order_usr_phone, usrView?.phone)
+        dataBinding.orderUsrName.text = getString(R.string.order_usr_name, usrView?.name)
+
 
         dataBinding.orderPlace.setOnClickListener {
-            if(usrViewModel.usrView.value?.usrId == null){
+            if(usrView?.usrId == null){
                 Toast.makeText(requireContext(), "订购失败，请登陆", Toast.LENGTH_LONG).apply {
                     setGravity(Gravity.CENTER,0,0)
                 }.show()
             }else{
-                usrViewModel.usrView.value?.usrId?.let { it1 ->
+                usrView.usrId?.let { it1 ->
                     orderViewModel.placeOrder(it1)
                     Toast.makeText(requireContext(), "订购成功！", Toast.LENGTH_LONG).apply {
                         setGravity(Gravity.CENTER,0,0)

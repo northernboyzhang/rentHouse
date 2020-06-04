@@ -54,4 +54,19 @@
     <!-- warn -->
     <string name="warn_login_first">请先登陆</string>
     <string name="warn_id_password_not_null">身份证号和密码不能为空</string>
+    <string name="warn_input_error">请检查输入</string>
+
+    <!--register house-->
+    <string name="register_house">登记房屋</string>
+    <string name="register_house_confirm">确认登记</string>
+    <string name="register_house_address">房屋地址</string>
+    <string name="register_house_type">房屋户型</string>
+    <string name="register_house_rent">房屋月租</string>
+    <string name="register_house_capacity">可居住人数</string>
+    <string name="register_house_rent_hint">请输入整数</string>
+
+
+
+
+
 </resources>

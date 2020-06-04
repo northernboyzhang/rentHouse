@@ -67,4 +67,5 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     kapt "com.android.databinding:compiler:3.5.0"
     implementation files('libs/mysql-connector-java-5.1.39-bin.jar')
+    implementation 'com.github.northernboyzhang:LibDemo:1.0'
 }

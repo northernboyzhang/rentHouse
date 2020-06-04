@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_navigation_personal_to_registerFragment"
             app:destination="@id/navigation_register" />
+        <action
+            android:id="@+id/action_navigation_personal_to_registerHouseFragment"
+            app:destination="@id/navigation_register_house" />
     </fragment>
     <fragment
         android:id="@+id/navigation_login"
@@ -61,4 +64,8 @@
         android:id="@+id/navigation_register"
         android:name="com.northernboy.renthouse.ui.register.RegisterFragment"
         android:label="@string/register_update" />
+    <fragment
+        android:id="@+id/navigation_register_house"
+        android:name="com.northernboy.renthouse.ui.registerHouse.RegisterHouseFragment"
+        android:label="@string/register_house" />
 </navigation>

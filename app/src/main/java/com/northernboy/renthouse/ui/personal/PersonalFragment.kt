@@ -34,6 +34,9 @@ class PersonalFragment : BaseBindingFragment<FragmentPersonalBinding>(R.layout.f
 
            findNavController().navigate(R.id.navigation_register)
        }
+        dataBinding.manageOwnHouse.root.setOnClickListener {
+            findNavController().navigate(R.id.navigation_register_house)
+        }
     }
 
     private fun setFunc() {

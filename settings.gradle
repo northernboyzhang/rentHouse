@@ -1,2 +1,3 @@
 rootProject.name='RentHouse'
 include ':app'
+include ':app:norotextview'
