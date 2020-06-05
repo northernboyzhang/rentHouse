@@ -13,6 +13,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background_grey"
         android:orientation="vertical"
         tools:context=".ui.personal.PersonalFragment">
 
@@ -57,25 +58,58 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <include
+        <com.northernboy.renthouse.custom.FuncView
             android:id="@+id/register_information"
-            layout="@layout/function" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:funDescription="@string/manage_personal_info"
+            app:funIcon="@drawable/ic_confirm_id_black_24dp"
+            app:funMoreIcon="@drawable/ic_chevron_right_black_24dp"
+            app:funDescriptionTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:drawLine="true"/>
 
-        <include
+
+        <com.northernboy.renthouse.custom.FuncView
             android:id="@+id/manage_own_house"
-            layout="@layout/function" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:funDescription="@string/manage_own_house"
+            app:funIcon="@drawable/ic_home_black_24dp"
+            app:funMoreIcon="@drawable/ic_chevron_right_black_24dp"
+            app:funDescriptionTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:drawLine="true"/>
 
-        <include
+
+        <com.northernboy.renthouse.custom.FuncView
             android:id="@+id/manage_rent_house"
-            layout="@layout/function" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:funDescription="@string/manage_rent_house"
+            app:funIcon="@drawable/ic_local_mall_black_24dp"
+            app:funMoreIcon="@drawable/ic_chevron_right_black_24dp"
+            app:funDescriptionTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:drawLine="true"/>
 
-        <include
+
+        <com.northernboy.renthouse.custom.FuncView
             android:id="@+id/manage_post"
-            layout="@layout/function" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:funDescription="@string/manage_post"
+            app:funIcon="@drawable/ic_library_books_black_24dp"
+            app:funMoreIcon="@drawable/ic_chevron_right_black_24dp"
+            app:funDescriptionTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:drawLine="true"/>
 
-        <include
+
+        <com.northernboy.renthouse.custom.FuncView
             android:id="@+id/logout"
-            layout="@layout/function" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:funDescription="@string/logout"
+            app:funIcon="@drawable/ic_exit_to_app_black_24dp"
+            app:funDescriptionTextAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

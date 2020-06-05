@@ -46,6 +46,7 @@ class RegisterHouseFragment : BaseBindingFragment<RegisterHouseFragmentBinding>(
                         houseType = type.toString()
                     })
                     findNavController().navigateUp()
+                    centerToast(requireContext(), getString(R.string.register_house_success))
                 }else{
                     centerToast(requireContext(), getString(R.string.warn_input_error))
                 }
@@ -54,11 +55,9 @@ class RegisterHouseFragment : BaseBindingFragment<RegisterHouseFragmentBinding>(
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("Not yet implemented")
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        TODO("Not yet implemented")
     }
 
 

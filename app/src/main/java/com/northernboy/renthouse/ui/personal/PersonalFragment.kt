@@ -27,29 +27,19 @@ class PersonalFragment : BaseBindingFragment<FragmentPersonalBinding>(R.layout.f
         dataBinding.login.setOnClickListener {
             findNavController().navigate(R.id.navigation_login)
         }
-        dataBinding.logout.root.setOnClickListener {
+        dataBinding.logout.setOnClickListener {
             usrViewModel.logout()
         }
-       dataBinding.registerInformation.root.setOnClickListener {
+       dataBinding.registerInformation.setOnClickListener {
 
            findNavController().navigate(R.id.navigation_register)
        }
-        dataBinding.manageOwnHouse.root.setOnClickListener {
+        dataBinding.manageOwnHouse.setOnClickListener {
             findNavController().navigate(R.id.navigation_register_house)
         }
     }
 
     private fun setFunc() {
-        dataBinding.apply {
-            registerInformation.apply {
-                funcName = getString(R.string.register_update)
-            }
-            manageOwnHouse.funcName = getString(R.string.manage_own_house)
-            manageRentHouse.funcName = getString(R.string.manage_rent_house)
-            managePost.funcName = getString(R.string.manage_post)
-            logout.apply {
-                funcName = getString(R.string.logout)
-            }
-        }
+
     }
 }

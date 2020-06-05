@@ -1,6 +1,7 @@
 package com.northernboy.renthouse.main
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -38,6 +39,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+
+
         navController.addOnDestinationChangedListener { _, _, _ ->
             getUsrView()?.let {
                 it.identityNo?.let {  id ->
@@ -48,5 +51,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        findNavController(R.id.nav_host_fragment).navigateUp()
+        return super.onOptionsItemSelected(item)
+    }
 
 }
