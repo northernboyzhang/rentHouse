@@ -65,9 +65,8 @@
     <string name="register_house_rent">房屋月租</string>
     <string name="register_house_capacity">可居住人数</string>
     <string name="register_house_rent_hint">请输入整数</string>
-
-
-
+    <string name="my_message">我的消息</string>
+    <string name="my_reserve">我的预约</string>
 
 
 </resources>

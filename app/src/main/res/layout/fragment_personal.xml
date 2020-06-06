@@ -59,6 +59,26 @@
 
 
         <com.northernboy.renthouse.custom.FuncView
+            android:id="@+id/my_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawLine="true"
+            app:funDescription="@string/my_message"
+            app:funDescriptionTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:funIcon="@drawable/ic_notifications_black_24dp" >
+
+        </com.northernboy.renthouse.custom.FuncView>
+
+        <com.northernboy.renthouse.custom.FuncView
+            android:id="@+id/my_reserve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:funDescription="@string/my_reserve"
+            app:funDescriptionTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:funIcon="@drawable/ic_date_range_black_24dp" />
+
+        <com.northernboy.renthouse.custom.FuncView
             android:id="@+id/register_information"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,8 +86,9 @@
             app:funIcon="@drawable/ic_confirm_id_black_24dp"
             app:funMoreIcon="@drawable/ic_chevron_right_black_24dp"
             app:funDescriptionTextAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:drawLine="true"/>
+            app:drawLine="true">
 
+        </com.northernboy.renthouse.custom.FuncView>
 
         <com.northernboy.renthouse.custom.FuncView
             android:id="@+id/manage_own_house"
@@ -95,11 +116,12 @@
             android:id="@+id/manage_post"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:drawLine="false"
             app:funDescription="@string/manage_post"
-            app:funIcon="@drawable/ic_library_books_black_24dp"
-            app:funMoreIcon="@drawable/ic_chevron_right_black_24dp"
             app:funDescriptionTextAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:drawLine="true"/>
+            app:funIcon="@drawable/ic_library_books_black_24dp"
+            app:funMoreIcon="@drawable/ic_chevron_right_black_24dp" />
 
 
         <com.northernboy.renthouse.custom.FuncView
