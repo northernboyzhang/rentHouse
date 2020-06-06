@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item"
+            type="com.northernboy.renthouse.view.HouseView" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="16dp">
+
+        <ImageView
+            android:id="@+id/manage_house_new"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:alpha="0.6"
+            android:background="?attr/actionBarItemBackground"
+            android:tint="@color/colorAccent"
+            app:srcCompat="@drawable/ic_add_black_24dp" />
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

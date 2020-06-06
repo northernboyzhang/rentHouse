@@ -25,6 +25,23 @@ class RentRepository {
         }
     }
 
+    suspend fun getOwnHouse(ownerId: Int): List<HouseView>{
+        return get("select * from owner_house_on_view where owner_id = $ownerId"){ re ->
+            val newHouseView = HouseView().apply {
+                re.run {
+                    houseId = getInt("house_id")
+                    houseAddress = getString("house_address")
+                    houseCapacity = getInt("house_capacity")
+                    houseRent = getFloat("house_rent")
+                    houseType = getString("house_type")
+                    houseStatus = getInt("house_status")
+                    houseOnShelve = getInt("house_onShelve")
+                }
+            }
+            newHouseView
+        }
+    }
+
     suspend fun getPost(): List<PostView>{
         return get("select * from usr_browse_bbs_view"){re ->
             val newPostView = PostView().apply {
@@ -104,8 +121,8 @@ class RentRepository {
     }
 
     suspend fun registerHouse(ownerId: Int, houseAddress: String, type: String, capacity: Int, rent: Float){
-        rentLog("insert into house value(null, owner_id = $ownerId, house_address = '$houseAddress', type = '$type', capacity = $capacity, rent = $rent, status = TRUE, onShelve = TRUE)")
-        Utils.changeMysql("insert into house value(null,$ownerId, '$houseAddress', '$type', $capacity, $rent, TRUE, TRUE)")
+        rentLog("insert into manage_house value(null, owner_id = $ownerId, house_address = '$houseAddress', type = '$type', capacity = $capacity, rent = $rent, status = TRUE, onShelve = TRUE)")
+        Utils.changeMysql("insert into manage_house value(null,$ownerId, '$houseAddress', '$type', $capacity, $rent, TRUE, TRUE)")
     }
     private suspend fun <T> get(query: String, buildItem: (re: ResultSet)-> T): List<T> {
         val re = Utils.getMysql(query)

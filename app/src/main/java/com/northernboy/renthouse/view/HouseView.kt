@@ -8,4 +8,6 @@ class HouseView : BaseView(){
     var houseType: String? = null
     var houseCapacity: Int? = null
     var houseRent: Float? = null
+    var houseStatus: Int? = null
+    var houseOnShelve: Int? = null
 }

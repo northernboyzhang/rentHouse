@@ -7,4 +7,18 @@
             <attr name="funDescriptionTextAppearance" format="reference"/>
             <attr name="drawLine" format="boolean"/>
         </declare-styleable>
+
+    <declare-styleable name="XTextView">
+        <attr name="XTextShowTitle" format="boolean"/>
+        <attr name="XTextShowSpinner" format="boolean"/>
+        <attr name="XTextShowContent" format="boolean"/>
+        <attr name="XTextContentEditable" format="boolean"/>
+        <attr name="XTextTitle" format="string"/>
+        <attr name="XTextTitleTextAppearance" format="reference"/>
+        <attr name="XTextContent" format="string"/>
+        <attr name="XTextContentHint" format="string"/>
+        <attr name="XTextContentTextAppearance" format="reference"/>
+        <attr name="XTextContentBackground" format="reference"/>
+        <attr name="XTextSpinnerEntry" format="reference"/>
+]    </declare-styleable>
 </resources>

@@ -5,6 +5,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.northernboy.renthouse.R
+import com.northernboy.renthouse.Utils.centerToast
+import com.northernboy.renthouse.Utils.getUsrView
 import com.northernboy.renthouse.base.BaseBindingFragment
 import com.northernboy.renthouse.databinding.FragmentPersonalBinding
 import com.northernboy.renthouse.main.UsrViewModel
@@ -35,7 +37,11 @@ class PersonalFragment : BaseBindingFragment<FragmentPersonalBinding>(R.layout.f
            findNavController().navigate(R.id.navigation_register)
        }
         dataBinding.manageOwnHouse.setOnClickListener {
-            findNavController().navigate(R.id.navigation_register_house)
+            if(getUsrView()?.usrId != null){
+             findNavController().navigate(R.id.navigation_manage_own_house)
+            }else{
+                centerToast(requireContext(), getString(R.string.warn_login_first))
+            }
         }
     }
 

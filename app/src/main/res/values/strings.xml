@@ -56,7 +56,7 @@
     <string name="warn_id_password_not_null">身份证号和密码不能为空</string>
     <string name="warn_input_error">请检查输入</string>
 
-    <!--register house-->
+    <!--register manage_house-->
     <string name="register_house">登记房屋</string>
     <string name="register_house_success">登记房屋成功</string>
     <string name="register_house_confirm">确认登记</string>
@@ -67,6 +67,7 @@
     <string name="register_house_rent_hint">请输入整数</string>
     <string name="my_message">我的消息</string>
     <string name="my_reserve">我的预约</string>
+    <string name="own_house">我的房屋</string>
 
 
 </resources>
