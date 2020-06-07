@@ -36,6 +36,7 @@
     <string name="order_usr_phone">电话：%1$s</string>
     <string name="order_usr_name">姓名：%1$s</string>
     <string name="order_total_rent">%1$s元</string>
+    <string name="order_history">历史订单</string>
     <!-- Reply -->
     <string name="reply">回复</string>
     
@@ -68,6 +69,11 @@
     <string name="my_message">我的消息</string>
     <string name="my_reserve">我的预约</string>
     <string name="own_house">我的房屋</string>
+    <string name="house_update">更新房屋信息</string>
+    <string name="status">上架</string>
+    <string name="confirm">确认</string>
+    <string name="delete">删除</string>
 
+    <string name="notify_success">成功</string>
 
 </resources>

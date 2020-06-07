@@ -2,10 +2,7 @@ package com.northernboy.renthouse
 
 import com.northernboy.renthouse.Utils.rentLog
 import com.northernboy.renthouse.Utils.storeUsrView
-import com.northernboy.renthouse.view.HouseView
-import com.northernboy.renthouse.view.PostView
-import com.northernboy.renthouse.view.ReplyView
-import com.northernboy.renthouse.view.UsrView
+import com.northernboy.renthouse.view.*
 import java.sql.ResultSet
 
 class RentRepository {
@@ -40,6 +37,66 @@ class RentRepository {
             }
             newHouseView
         }
+    }
+
+
+    suspend fun getOrder(usrId: Int): List<OrderView>{
+        return get("select * from order_view where renter = $usrId or owner_id = $usrId"){ re ->
+            val newOrderView = OrderView().apply {
+                re.run {
+                    orderId = getInt("order_id")
+                    orderDateTime = getString("order_datetime")
+                    orderMonth = getInt("order_month")
+                    houseAddress = getString("house_address")
+                    houseId = getInt("house_id")
+                    houseCapacity = getInt("house_capacity")
+                    houseRent = getFloat("house_rent")
+                    ownerId = getInt("owner_id")
+                    ownerName = getString("owner_name")
+                    ownerPhone = getString("owner_phone")
+                    renterId = getInt("renter_id")
+                    renterName = getString("renter_name")
+                    renterPhone = getString("renter_phone")
+                    isOwner = (usrId == ownerId)
+                }
+            }
+            newOrderView
+        }
+    }
+
+    suspend fun getReserve(usrId: Int): List<ReserveView>{
+        return get("select * from reserve_view where renter_id = $usrId or owner_id = $usrId"){ re ->
+            val newReserveView = ReserveView().apply {
+                re.run {
+                    reserveId = getInt("reserve_id")
+                    renterId = getInt("renter_id")
+                    renterName = getString("renter_name")
+                    renterPhone = getString("renter_phone")
+                    reserveDateTime = getString("reserve_datetime")
+                    reserveIsChecked = getInt("reserve_is_checked")
+                    houseId = getInt("house_id")
+                    houseAddress = getString("house_address")
+                    ownerId = getInt("owner_id")
+                    ownerName = getString("owner_name")
+                    ownerPhone = getString("owner_phone")
+                    isOwner = (usrId == ownerId)
+                }
+            }
+            newReserveView
+        }
+    }
+
+    suspend fun checkReserve(reserveID :Int){
+        Utils.changeMysql("update reserve set isChecked = TRUE where reserve_id = $reserveID")
+    }
+
+    suspend fun updateHouse(houseId: Int, houseAddress: String, houseType: String, houseCapacity: Int, houseRent: Float, status: Boolean, onShelve: Boolean){
+        rentLog("update house set house_address = '$houseAddress', type='$houseType', capacity = $houseCapacity, rent= $houseRent, status = $status, onShelve = $onShelve where house_id = $houseId")
+        Utils.changeMysql("update house set house_address = '$houseAddress', type='$houseType', capacity = $houseCapacity, rent= $houseRent, status = $status, onShelve = $onShelve where house_id = $houseId")
+    }
+
+    suspend fun deleteHouse(houseId: Int){
+
     }
 
     suspend fun getPost(): List<PostView>{
@@ -124,6 +181,7 @@ class RentRepository {
         rentLog("insert into manage_house value(null, owner_id = $ownerId, house_address = '$houseAddress', type = '$type', capacity = $capacity, rent = $rent, status = TRUE, onShelve = TRUE)")
         Utils.changeMysql("insert into manage_house value(null,$ownerId, '$houseAddress', '$type', $capacity, $rent, TRUE, TRUE)")
     }
+
     private suspend fun <T> get(query: String, buildItem: (re: ResultSet)-> T): List<T> {
         val re = Utils.getMysql(query)
         val list = mutableListOf<T>()

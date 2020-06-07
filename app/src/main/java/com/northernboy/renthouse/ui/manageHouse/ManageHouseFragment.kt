@@ -18,6 +18,7 @@ class ManageHouseFragment : BaseBindingFragment<ManageHouseFragmentBinding>(R.la
 
     private lateinit var manageHouseViewModel: ManageHouseViewModel
 
+
     override fun initViewModel() {
         manageHouseViewModel = ViewModelProvider(this).get(ManageHouseViewModel::class.java)
     }
@@ -49,7 +50,8 @@ class ManageHouseAdapter: NViewAdapter<HouseView>(DiffCallBack()){
         }else{
             dataBinding = binding as ManageHouseBinding
             dataBinding.manageHouseMore.setOnClickListener {
-                
+                val action = ManageHouseFragmentDirections.actionNavigationManageOwnHouseToMangeHouseUpdateFragment(dataBinding.item.toString())
+                dataBinding.root.findNavController().navigate(action)
             }
         }
     }

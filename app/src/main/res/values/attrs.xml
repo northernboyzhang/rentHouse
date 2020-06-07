@@ -20,5 +20,6 @@
         <attr name="XTextContentTextAppearance" format="reference"/>
         <attr name="XTextContentBackground" format="reference"/>
         <attr name="XTextSpinnerEntry" format="reference"/>
+        <attr name="XTextSpinnerInitValue" format="integer"/>
 ]    </declare-styleable>
 </resources>

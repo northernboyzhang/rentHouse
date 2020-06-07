@@ -74,5 +74,17 @@
     <fragment
         android:id="@+id/navigation_manage_own_house"
         android:name="com.northernboy.renthouse.ui.manageHouse.ManageHouseFragment"
-        android:label="@string/own_house" />
+        android:label="@string/own_house" >
+        <action
+            android:id="@+id/action_navigation_manage_own_house_to_mangeHouseUpdateFragment"
+            app:destination="@id/navigation_house_update" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_house_update"
+        android:name="com.northernboy.renthouse.ui.manageHouse.ManageHouseUpdateFragment"
+        android:label="@string/house_update">
+        <argument
+            android:name="houseView"
+            app:argType="string" />
+    </fragment>
 </navigation>

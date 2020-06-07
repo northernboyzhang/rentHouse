@@ -7,8 +7,9 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.*
 import com.northernboy.renthouse.R
+import com.northernboy.renthouse.Utils.rentLog
 
-class XTextView(context: Context, attributeSet: AttributeSet): LinearLayout(context, attributeSet) {
+class XTextView(context: Context, attributeSet: AttributeSet): LinearLayout(context, attributeSet), AdapterView.OnItemSelectedListener {
 
     var showTitle = true
     var showSpinner = false
@@ -16,6 +17,7 @@ class XTextView(context: Context, attributeSet: AttributeSet): LinearLayout(cont
     var xContent: EditText? = null
     var xSpinner: Spinner? = null
     var xTitle: TextView? = null
+    var xSpinnerInitValue: Any? = null
 
     init {
         inflate(context, R.layout.view_xtext, this)
@@ -63,14 +65,25 @@ class XTextView(context: Context, attributeSet: AttributeSet): LinearLayout(cont
         attributes.recycle()
     }
 
-    fun getContent(): String{
+    fun getContent(): String?{
         return xContent?.text.toString()
     }
-    fun getSpinner(): Any?{
+    fun getSpinnerSelectedItem(): Any?{
         return xSpinner?.selectedItem
     }
 
     fun setXTextContent(content: String){
         xContent?.text = Editable.Factory().newEditable(content)
+    }
+
+    fun setXTextSpinnerInitValue(value: Int){
+        xSpinnerInitValue = value
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        parent?.setSelection(xSpinnerInitValue as Int - 1)
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
     }
 }

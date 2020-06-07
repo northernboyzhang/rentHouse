@@ -111,6 +111,15 @@
             app:funDescriptionTextAppearance="@style/TextAppearance.AppCompat.Medium"
             app:drawLine="true"/>
 
+        <com.northernboy.renthouse.custom.FuncView
+            android:id="@+id/manage_order"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            app:drawLine="true"
+            app:funDescription="@string/order_history"
+            app:funDescriptionTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:funIcon="@drawable/ic_receipt_black_24dp"
+            app:funMoreIcon="@drawable/ic_chevron_right_black_24dp" />
 
         <com.northernboy.renthouse.custom.FuncView
             android:id="@+id/manage_post"
