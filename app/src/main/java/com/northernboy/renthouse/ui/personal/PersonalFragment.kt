@@ -26,23 +26,29 @@ class PersonalFragment : BaseBindingFragment<FragmentPersonalBinding>(R.layout.f
         usrViewModel.isLogin.observe(viewLifecycleOwner, Observer {
             dataBinding.login.visibility = if (it) View.INVISIBLE else View.VISIBLE
         })
-        dataBinding.login.setOnClickListener {
-            findNavController().navigate(R.id.navigation_login)
-        }
-        dataBinding.logout.setOnClickListener {
-            usrViewModel.logout()
-        }
-       dataBinding.registerInformation.setOnClickListener {
+        dataBinding.apply {
+            login.setOnClickListener {
+                findNavController().navigate(R.id.navigation_login)
+            }
+            logout.setOnClickListener {
+                usrViewModel.logout()
+            }
+            registerInformation.setOnClickListener {
 
-           findNavController().navigate(R.id.navigation_register)
-       }
-        dataBinding.manageOwnHouse.setOnClickListener {
-            if(getUsrView()?.usrId != null){
-             findNavController().navigate(R.id.navigation_manage_own_house)
-            }else{
-                centerToast(requireContext(), getString(R.string.warn_login_first))
+                findNavController().navigate(R.id.navigation_register)
+            }
+            manageOwnHouse.setOnClickListener {
+                if(getUsrView()?.usrId != null){
+                    findNavController().navigate(R.id.navigation_manage_own_house)
+                }else{
+                    centerToast(requireContext(), getString(R.string.warn_login_first))
+                }
+            }
+            manageOrder.setOnClickListener {
+                findNavController().navigate(R.id.navigation_order_history)
             }
         }
+
     }
 
     private fun setFunc() {

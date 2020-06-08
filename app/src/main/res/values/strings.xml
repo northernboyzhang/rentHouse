@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">RentHouse</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="address">地址</string>
     <string name="manage_personal_info">个人信息登记</string>
     <string name="manage_own_house">出租的房子</string>
@@ -39,7 +36,7 @@
     <string name="order_history">历史订单</string>
     <!-- Reply -->
     <string name="reply">回复</string>
-    
+
     <!-- Register-->
     <string name="register_update">登记修改</string>
     <string name="register_identity_no">身份证号</string>
@@ -75,5 +72,22 @@
     <string name="delete">删除</string>
 
     <string name="notify_success">成功</string>
+
+    <string name="order_history_total">总计：%1$s元</string>
+    <string name="order_history_income">收入：%1$s元</string>
+    <string name="order_history_outcome">支出：%1$s元</string>
+    <string name="order_history_month">月数：%1$s</string>
+    <string name="order_history_id">订单编号：%1$s</string>
+    <string name="order_history_datetime">订单日期：%1$s</string>
+
+    <string name="order_history_type">户型：%1$s</string>
+    <string name="order_history_rent">月租金：%1$s</string>
+    <string name="order_history_capacity">居住人数：%1$s</string>
+    <string name="order_history_owner_name">房主姓名：%1$s</string>
+    <string name="order_history_owner_phone">房主电话：%1$s</string>
+    <string name="order_history_renter_name">租客姓名：%1$s</string>
+    <string name="order_history_renter_phone">租客电话：%1$s</string>
+    <string name="order_history_detail">订单详情</string>
+
 
 </resources>

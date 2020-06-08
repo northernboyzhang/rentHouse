@@ -41,7 +41,7 @@ class RentRepository {
 
 
     suspend fun getOrder(usrId: Int): List<OrderView>{
-        return get("select * from order_view where renter = $usrId or owner_id = $usrId"){ re ->
+        return get("select * from order_view where renter_id = $usrId or owner_id = $usrId"){ re ->
             val newOrderView = OrderView().apply {
                 re.run {
                     orderId = getInt("order_id")
@@ -51,6 +51,7 @@ class RentRepository {
                     houseId = getInt("house_id")
                     houseCapacity = getInt("house_capacity")
                     houseRent = getFloat("house_rent")
+                    houseType = getString("house_type")
                     ownerId = getInt("owner_id")
                     ownerName = getString("owner_name")
                     ownerPhone = getString("owner_phone")
@@ -58,6 +59,7 @@ class RentRepository {
                     renterName = getString("renter_name")
                     renterPhone = getString("renter_phone")
                     isOwner = (usrId == ownerId)
+                    total = orderMonth?.times(houseRent!!)?:0f
                 }
             }
             newOrderView

@@ -16,4 +16,5 @@ class OrderView: BaseView(){
     var ownerName: String? = null
     var ownerPhone: String? = null
     var isOwner: Boolean = false//是租客还是房主
+    var total: Float? = null
 }

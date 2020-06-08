@@ -20,7 +20,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@color/design_default_color_surface">
 
             <TextView
                 android:id="@+id/usr_name"
@@ -40,11 +42,11 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:tint="@color/colorPrimary"
+                android:tint="@color/colorAccent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_sentiment_satisfied_black_24dp" />
+                app:srcCompat="@drawable/ic_face_black_24dp" />
 
             <Button
                 android:id="@+id/login"

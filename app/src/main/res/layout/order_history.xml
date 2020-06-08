@@ -1,107 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="item"
+            type="com.northernboy.renthouse.view.OrderView" />
+    </data>
 
-    <ImageView
-        android:id="@+id/order_status"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_check_circle_black_24dp" />
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/order_datetime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="32dp"
-        tools:text="订单日期：2018-12-12" />
+        <com.northernboy.renthouse.custom.FuncView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            app:funDescription="@{item.houseAddress}"
+            app:funIcon="@drawable/ic_place_black_24dp" />
 
-    <TextView
-        android:id="@+id/order_month"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="TextView"
-        tools:text="租住月数：2（月）" />
+        <com.northernboy.renthouse.custom.FuncView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            app:drawLine="true"
+            app:funDescription="@{@string/order_history_month(item.orderMonth.toString())}"
+            app:funIcon="@drawable/ic_timelapse_black_24dp" />
 
-    <TextView
-        android:id="@+id/order_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="60dp"
-        tools:text="地址：xxxx" />
+        <com.northernboy.renthouse.custom.FuncView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            app:funDescription="@{item.owner? @string/order_history_income(item.total.toString()): @string/order_history_outcome(item.total.toString())}"
+            app:funDescriptionTextAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-    <TextView
-        android:id="@+id/order_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="TextView"
-        tools:text="房型：三室一厅" />
-
-    <TextView
-        android:id="@+id/order_rent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="96dp"
-        tools:text="月租金：300元" />
-
-    <TextView
-        android:id="@+id/order_capacity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="TextView"
-        tools:text="可居住：12人" />
-
-    <TextView
-        android:id="@+id/order_renter_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="TextView"
-        tools:text="租客：肖睿" />
-
-    <TextView
-        android:id="@+id/order_renter_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="TextView"
-        tools:text="租客电话：xxx" />
-
-    <TextView
-        android:id="@+id/order_total_rent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="TextView"
-        tools:text="总计：1000元" />
-
-    <TextView
-        android:id="@+id/order_owner_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/order_owner_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="TextView" />
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
+</layout>

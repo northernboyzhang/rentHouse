@@ -42,11 +42,14 @@
         <action
             android:id="@+id/action_navigation_personal_to_manageHouseFragment"
             app:destination="@id/navigation_manage_own_house" />
+        <action
+            android:id="@+id/action_navigation_personal_to_orderHistoryFragment"
+            app:destination="@id/navigation_order_history" />
     </fragment>
     <fragment
         android:id="@+id/navigation_login"
         android:name="com.northernboy.renthouse.ui.LoginFragment"
-        android:label="LoginFragment" />
+        android:label="@string/login" />
     <fragment
         android:id="@+id/navigation_reply"
         android:name="com.northernboy.renthouse.ui.bbs.ReplyFragment"
@@ -85,6 +88,22 @@
         android:label="@string/house_update">
         <argument
             android:name="houseView"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_order_history"
+        android:name="com.northernboy.renthouse.ui.orderHistory.OrderHistoryFragment"
+        android:label="@string/order_history" >
+        <action
+            android:id="@+id/action_navigation_order_history_to_orderHistoryDetail"
+            app:destination="@id/navigation_order_history_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_order_history_detail"
+        android:name="com.northernboy.renthouse.ui.orderHistory.OrderHistoryDetailFragment"
+        android:label="@string/order_history_detail">
+        <argument
+            android:name="OrderView"
             app:argType="string" />
     </fragment>
 </navigation>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.northernboy.renthouse.view.OrderView" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_grey"
+        android:orientation="vertical">
+
+        <com.northernboy.renthouse.custom.FuncView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            app:drawLine="true"
+            app:funDescription="@{item.houseAddress}"
+            app:funIcon="@drawable/ic_place_black_24dp" />
+
+        <com.northernboy.renthouse.custom.FuncView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            app:drawLine="true"
+            app:funDescription="@{@string/order_history_type(item.houseType)}" />
+
+        <com.northernboy.renthouse.custom.FuncView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            app:drawLine="true"
+            app:funDescription="@{@string/order_history_capacity(item.houseCapacity)}" />
+
+        <com.northernboy.renthouse.custom.FuncView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:clickable="false"
+            app:funDescription="@{@string/order_history_rent(item.houseRent)}" />
+
+        <com.northernboy.renthouse.custom.FuncView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            app:drawLine="true"
+            app:funIcon="@drawable/ic_face_black_24dp"
+            app:funDescription="@{item.owner? @string/order_history_renter_name(item.renterName): @string/order_history_owner_name(item.ownerName)}" />
+
+        <com.northernboy.renthouse.custom.FuncView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:clickable="false"
+            app:drawLine="true"
+            app:funIcon="@drawable/ic_phone_black_24dp"
+            app:funDescription="@{item.owner? @string/order_history_renter_phone(item.renterPhone): @string/order_history_owner_phone(item.ownerPhone)}" />
+
+
+        <com.northernboy.renthouse.custom.FuncView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            app:drawLine="true"
+            app:funDescription="@{@string/order_history_month(item.orderMonth.toString())}"
+            app:funIcon="@drawable/ic_timelapse_black_24dp" />
+
+        <com.northernboy.renthouse.custom.FuncView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:layout_marginBottom="8dp"
+            app:drawLine="true"
+            app:funDescription="@{@string/order_history_total(item.total.toString())}"
+            app:funDescriptionTextAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <com.northernboy.renthouse.custom.FuncView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            app:drawLine="true"
+            app:funDescription="@{@string/order_history_id(item.orderId)}" />
+
+        <com.northernboy.renthouse.custom.FuncView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            app:funDescription="@{@string/order_history_datetime(item.orderDateTime)}" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

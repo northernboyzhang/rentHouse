@@ -11,18 +11,21 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.northernboy.renthouse.R
+import org.w3c.dom.Text
 
 class FuncView(context: Context, attributeSet: AttributeSet) : ConstraintLayout(context, attributeSet){
 
     private val paint = Paint()
     private var drawLine : Boolean
-    private var funcLayout: LinearLayout
     private var isDown = false
+
+    private var funcLayout: LinearLayout
+    private lateinit var funcText: TextView
 
     init {
         inflate(context, R.layout.view_func, this)
         val funcIcon = findViewById<ImageView>(R.id.func_icon)
-        val funcText = findViewById<TextView>(R.id.func_description)
+        funcText = findViewById<TextView>(R.id.func_description)
         val funcMoreIcon = findViewById<ImageView>(R.id.func_more)
         val attrs = context.obtainStyledAttributes(attributeSet, R.styleable.FuncView)
         funcLayout = findViewById(R.id.func)
@@ -34,7 +37,12 @@ class FuncView(context: Context, attributeSet: AttributeSet) : ConstraintLayout(
         attrs.recycle()
     }
 
+
+
     override fun onTouchEvent(event: MotionEvent?): Boolean {
+        if(!isClickable){
+            return false
+        }
         Log.d("FuncView", event?.actionMasked.toString())
         when(event?.actionMasked){
             MotionEvent.ACTION_DOWN -> {
@@ -60,8 +68,12 @@ class FuncView(context: Context, attributeSet: AttributeSet) : ConstraintLayout(
         super.dispatchDraw(canvas)
         if(drawLine){
             paint.color = context.getColor(R.color.background_grey)
-            paint.strokeWidth = 1f
+            paint.strokeWidth = 2f
             canvas?.drawLine(150f, (height-1).toFloat(), width.toFloat(), (height-1).toFloat(), paint)
         }
+    }
+
+    fun setFunDescription(des: String){
+        funcText.text = des
     }
 }

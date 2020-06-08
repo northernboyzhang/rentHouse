@@ -2,6 +2,7 @@ package com.northernboy.renthouse.main
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -41,12 +42,17 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        navController.addOnDestinationChangedListener { _, _, _ ->
+
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
             getUsrView()?.let {
                 it.identityNo?.let {  id ->
                     it.password?.let { it1 -> usrViewModel.login(id, it1) }
                 }
-
+            }
+            when(destination.id){
+                R.id.navigation_reply -> navView.visibility = View.GONE
+                R.id.navigation_house_update -> navView.visibility  =View.GONE
+                else -> navView.visibility = View.VISIBLE
             }
         }
     }
