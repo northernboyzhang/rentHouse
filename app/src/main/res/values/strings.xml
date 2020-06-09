@@ -89,5 +89,10 @@
     <string name="order_history_renter_phone">租客电话：%1$s</string>
     <string name="order_history_detail">订单详情</string>
 
+    <string name="reserve_title">预约</string>
+    <string name="reserve_owner_name">房主：%1$s</string>
+    <string name="reserve_phone">电话：%1$s</string>
+    <string name="reserve_renter_name">租客：%1$s</string>
+    <string name="reserve_address">房屋地址：%1$s</string>
 
 </resources>

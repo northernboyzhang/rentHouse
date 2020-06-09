@@ -172,7 +172,7 @@ class RentRepository {
     }
 
     suspend fun reserve(houseId: Int, renterId: Int){
-        Utils.changeMysql("insert into reserve value($renterId, $houseId, now(), FALSE)")
+        Utils.changeMysql("insert into reserve value(null, $renterId, $houseId, now(), FALSE)")
     }
 
     suspend fun registerID(name: String, usrAddress: String, gender: Int, phone: String, usrId: Int){

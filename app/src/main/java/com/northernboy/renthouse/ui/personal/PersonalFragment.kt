@@ -34,7 +34,6 @@ class PersonalFragment : BaseBindingFragment<FragmentPersonalBinding>(R.layout.f
                 usrViewModel.logout()
             }
             registerInformation.setOnClickListener {
-
                 findNavController().navigate(R.id.navigation_register)
             }
             manageOwnHouse.setOnClickListener {
@@ -46,6 +45,9 @@ class PersonalFragment : BaseBindingFragment<FragmentPersonalBinding>(R.layout.f
             }
             manageOrder.setOnClickListener {
                 findNavController().navigate(R.id.navigation_order_history)
+            }
+            myReserve.setOnClickListener {
+                findNavController().navigate(R.id.navigation_reserve)
             }
         }
 

@@ -45,6 +45,9 @@
         <action
             android:id="@+id/action_navigation_personal_to_orderHistoryFragment"
             app:destination="@id/navigation_order_history" />
+        <action
+            android:id="@+id/action_navigation_personal_to_reserveFragment"
+            app:destination="@id/navigation_reserve" />
     </fragment>
     <fragment
         android:id="@+id/navigation_login"
@@ -106,4 +109,8 @@
             android:name="OrderView"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_reserve"
+        android:name="com.northernboy.renthouse.ui.reserve.ReserveFragment"
+        android:label="@string/my_reserve" />
 </navigation>

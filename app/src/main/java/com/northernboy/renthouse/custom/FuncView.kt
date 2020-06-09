@@ -3,6 +3,8 @@ package com.northernboy.renthouse.custom
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.drawable.Drawable
+import android.media.Image
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
@@ -20,14 +22,17 @@ class FuncView(context: Context, attributeSet: AttributeSet) : ConstraintLayout(
     private var isDown = false
 
     private var funcLayout: LinearLayout
+    private lateinit var funcIcon: ImageView
+    private lateinit var funcMoreIcon: ImageView
     private lateinit var funcText: TextView
 
     init {
         inflate(context, R.layout.view_func, this)
-        val funcIcon = findViewById<ImageView>(R.id.func_icon)
+        funcIcon = findViewById<ImageView>(R.id.func_icon)
         funcText = findViewById<TextView>(R.id.func_description)
-        val funcMoreIcon = findViewById<ImageView>(R.id.func_more)
+        funcMoreIcon = findViewById<ImageView>(R.id.func_more)
         val attrs = context.obtainStyledAttributes(attributeSet, R.styleable.FuncView)
+
         funcLayout = findViewById(R.id.func)
         drawLine = attrs.getBoolean(R.styleable.FuncView_drawLine, false)
         funcIcon.setImageDrawable(attrs.getDrawable(R.styleable.FuncView_funIcon))
@@ -75,5 +80,9 @@ class FuncView(context: Context, attributeSet: AttributeSet) : ConstraintLayout(
 
     fun setFunDescription(des: String){
         funcText.text = des
+    }
+
+    fun setFunMoreIcon(icon: Drawable?){
+        funcMoreIcon.setImageDrawable(icon)
     }
 }
