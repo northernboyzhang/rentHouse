@@ -20,7 +20,7 @@
             android:layout_height="60dp"
             android:alpha="0.6"
             android:background="?attr/actionBarItemBackground"
-            android:tint="@color/colorAccent"
+            android:tint="@color/colorPrimary"
             app:srcCompat="@drawable/ic_add_black_24dp" />
 
     </com.google.android.material.card.MaterialCardView>

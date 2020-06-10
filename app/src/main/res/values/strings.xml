@@ -94,5 +94,6 @@
     <string name="reserve_phone">电话：%1$s</string>
     <string name="reserve_renter_name">租客：%1$s</string>
     <string name="reserve_address">房屋地址：%1$s</string>
+    <string name="post_detail">帖子详情</string>
 
 </resources>

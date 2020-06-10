@@ -20,20 +20,44 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/manage_house_more"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="right"
-                android:layout_margin="4dp"
-                android:alpha="0.6"
-                android:background="?attr/actionBarItemBackground"
-                app:srcCompat="@drawable/ic_chevron_right_black_24dp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/manage_house_more"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:alpha="0.6"
+                    android:background="?attr/actionBarItemBackground"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_chevron_right_black_24dp" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_home_black_24dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.northernboy.renthouse.custom.XTextView
                 android:id="@+id/manage_house_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 app:XTextContent="@{item.houseAddress}"
                 app:XTextContentTextAppearance="@style/TextAppearance.AppCompat.Body2" />
 
@@ -49,7 +73,9 @@
                     android:layout_marginBottom="8dp"
                     android:layout_weight="1"
                     android:clipToPadding="false"
-                    app:XTextContent="@{item.houseType}" />
+                    android:paddingStart="8dp"
+                    app:XTextContent="@{item.houseType}"
+                    app:XTextContentTextAppearance="@style/TextAppearance.AppCompat.Body2" />
 
                 <com.northernboy.renthouse.custom.XTextView
                     android:id="@+id/manage_house_rent"
@@ -57,6 +83,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:layout_weight="1"
+                    android:layoutDirection="rtl"
+                    android:paddingStart="8dp"
                     app:XTextContent="@{item.houseRent.toString()}" />
             </LinearLayout>
         </LinearLayout>

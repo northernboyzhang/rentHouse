@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/navigation_reply"
         android:name="com.northernboy.renthouse.ui.bbs.ReplyFragment"
-        android:label="@string/manage_post">
+        android:label="@string/post_detail">
         <argument
             android:name="PostView"
             app:argType="string" />

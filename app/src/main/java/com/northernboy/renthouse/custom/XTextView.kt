@@ -1,6 +1,7 @@
 package com.northernboy.renthouse.custom
 
 import android.content.Context
+import android.graphics.Color
 import android.text.Editable
 import android.util.AttributeSet
 import android.view.MotionEvent
@@ -41,7 +42,8 @@ class XTextView(context: Context, attributeSet: AttributeSet): LinearLayout(cont
             xContent?.apply {
                 setText(attributes.getString(R.styleable.XTextView_XTextContent))
                 hint = attributes.getString(R.styleable.XTextView_XTextContentHint)
-                setTextAppearance(attributes.getResourceId(R.styleable.XTextView_XTextContentTextAppearance, android.R.style.TextAppearance_Material_Body2))
+                setTextAppearance(attributes.getResourceId(R.styleable.XTextView_XTextContentTextAppearance, R.style.TextAppearance_AppCompat_Body2))
+                setTextColor(Color.BLACK)
                 background = context.getDrawable(attributes.getResourceId(R.styleable.XTextView_XTextContentBackground, R.drawable.background_edit_text))
                 isEnabled = attributes.getBoolean(R.styleable.XTextView_XTextContentEditable, false)
             }

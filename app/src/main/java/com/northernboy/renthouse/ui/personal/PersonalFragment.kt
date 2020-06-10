@@ -50,6 +50,7 @@ class PersonalFragment : BaseBindingFragment<FragmentPersonalBinding>(R.layout.f
                 findNavController().navigate(R.id.navigation_reserve)
             }
         }
+        dataBinding.item = getUsrView()
 
     }
 

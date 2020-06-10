@@ -1,5 +1,10 @@
 package com.northernboy.renthouse.ui.home
 
+import android.graphics.drawable.ClipDrawable.HORIZONTAL
+import android.opengl.Visibility
+import android.transition.TransitionManager
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -7,6 +12,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.gson.Gson
 import com.northernboy.renthouse.R
 import com.northernboy.renthouse.Utils.centerToast
@@ -37,7 +44,6 @@ class HomeFragment : BaseBindingFragment<FragmentHomeBinding>(R.layout.fragment_
                     centerToast(context, "请先登录")
                 }
             }
-            layoutManager = LinearLayoutManager(context)
         }
         val adapter = dataBinding.recyclerHouseView.adapter as HouseViewAdapter
         homeViewModel.houseViewList.observe(viewLifecycleOwner, Observer {
@@ -51,12 +57,29 @@ class HouseViewAdapter(val reserve:(houseId: Int) -> Unit) : NViewAdapter<HouseV
 
     override fun touchEvent(binding: ViewDataBinding) {
         val houseViewDataBinding = binding as HouseViewBinding
-        houseViewDataBinding.order.setOnClickListener {
+       houseViewDataBinding.order.setOnClickListener {
             val action = HomeFragmentDirections.actionNavigationHomeToOrderFragment(Gson().toJson(houseViewDataBinding.item))
             houseViewDataBinding.root.findNavController().navigate(action)
         }
         houseViewDataBinding.reserve.setOnClickListener {
             houseViewDataBinding.item?.houseId?.let { houseId -> reserve(houseId) }
+        }
+        houseViewDataBinding.expandMore.setOnClickListener {
+            TransitionManager.beginDelayedTransition(binding.root as ViewGroup)
+            val vis = houseViewDataBinding.funcs.visibility
+            val rotateValue: Float
+            if(vis == View.GONE){
+                houseViewDataBinding.funcs.visibility = View.VISIBLE
+                rotateValue = 180f
+            }else{
+                //houseViewDataBinding.funcs.visibility = View.INVISIBLE
+                houseViewDataBinding.funcs.visibility = View.GONE
+                rotateValue = 0f
+            }
+            it.animate().apply {
+                rotation(rotateValue)
+                duration = 500
+            }.start()
         }
     }
 
