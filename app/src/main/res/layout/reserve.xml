@@ -24,7 +24,7 @@
             <com.northernboy.renthouse.custom.FuncView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:funDescription="@{item.isOwner()?@string/reserve_owner_name(item.ownerName) : @string/reserve_renter_name(item.renterName)}"
+                app:funDescription="@{item.isOwner()? @string/reserve_renter_name(item.renterName): @string/reserve_owner_name(item.ownerName)}"
                 app:funIcon="@drawable/ic_date_range_black_24dp"
                 app:funMoreIcon="@{item.isOwner()?@drawable/ic_lens_black_24dp:null}"/>
 
@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:drawLine="true"
-                app:funDescription="@{item.isOwner()?@string/reserve_phone(item.ownerPhone) : @string/reserve_renter_name(item.renterPhone)}" />
+                app:funDescription="@{item.isOwner()? @string/reserve_phone(item.renterPhone): @string/reserve_phone(item.ownerPhone)}" />
 
             <com.northernboy.renthouse.custom.FuncView
                 android:layout_width="match_parent"

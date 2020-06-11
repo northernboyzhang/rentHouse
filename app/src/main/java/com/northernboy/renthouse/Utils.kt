@@ -18,20 +18,16 @@ object Utils {
         Class.forName("com.mysql.jdbc.Driver")
     }
 
-    suspend fun getMysql(query: String): ResultSet = withContext(Dispatchers.IO){
-       mysql(query){stmt, query ->
-           stmt.executeQuery(query)
-       }
-    }
-
     suspend fun changeMysql(query: String): Boolean = withContext(Dispatchers.IO){
         mysql(query){stmt, query ->
             stmt.execute(query)
         }
     }
 
-    fun rentLog(msg: String){
-        Log.d("Rent", msg)
+    suspend fun getMysql(query: String): ResultSet = withContext(Dispatchers.IO){
+        mysql(query){stmt, query ->
+            stmt.executeQuery(query)
+        }
     }
 
     private suspend fun<T> mysql(query: String, execute:(stmt: Statement, query: String)->T): T = withContext(Dispatchers.IO){
@@ -40,6 +36,13 @@ object Utils {
         stmt.queryTimeout = 3000
         execute(stmt, query)
     }
+
+
+    fun rentLog(msg: String){
+        Log.d("Rent", msg)
+    }
+
+
 
     fun getUsrView(): UsrView?{
         return Gson().fromJson(RentHouseApplication.context.getSharedPreferences("Usr", MODE_PRIVATE).getString("Usr", null), UsrView::class.java)

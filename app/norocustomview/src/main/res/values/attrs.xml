@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <declare-styleable name="FuncView">
-            <attr name="funIcon" format="reference"/>
-            <attr name="funDescription" format="string"/>
-            <attr name="funMoreIcon" format="reference"/>
-            <attr name="funDescriptionTextAppearance" format="reference"/>
-            <attr name="drawLine" format="boolean"/>
-        </declare-styleable>
+    <declare-styleable name="FuncView">
+        <attr name="funIcon" format="reference"/>
+        <attr name="funDescription" format="string"/>
+        <attr name="funMoreIcon" format="reference"/>
+        <attr name="funDescriptionTextAppearance" format="reference"/>
+        <attr name="drawLine" format="boolean"/>
+    </declare-styleable>
 
     <declare-styleable name="XTextView">
         <attr name="XTextShowTitle" format="boolean"/>

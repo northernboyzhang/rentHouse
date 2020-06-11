@@ -84,6 +84,7 @@ class RentRepository {
                     isOwner = (usrId == ownerId)
                 }
             }
+            rentLog(newReserveView.toString())
             newReserveView
         }
     }
@@ -93,8 +94,8 @@ class RentRepository {
     }
 
     suspend fun updateHouse(houseId: Int, houseAddress: String, houseType: String, houseCapacity: Int, houseRent: Float, status: Boolean, onShelve: Boolean){
-        rentLog("update house set house_address = '$houseAddress', type='$houseType', capacity = $houseCapacity, rent= $houseRent, status = $status, onShelve = $onShelve where house_id = $houseId")
-        Utils.changeMysql("update house set house_address = '$houseAddress', type='$houseType', capacity = $houseCapacity, rent= $houseRent, status = $status, onShelve = $onShelve where house_id = $houseId")
+        Utils.changeMysql(
+            "update house set house_address = '$houseAddress', type='$houseType', capacity = $houseCapacity, rent= $houseRent, status = $status, onShelve = $onShelve where house_id = $houseId")
     }
 
     suspend fun deleteHouse(houseId: Int){
@@ -180,7 +181,6 @@ class RentRepository {
     }
 
     suspend fun registerHouse(ownerId: Int, houseAddress: String, type: String, capacity: Int, rent: Float){
-        rentLog("insert into manage_house value(null, owner_id = $ownerId, house_address = '$houseAddress', type = '$type', capacity = $capacity, rent = $rent, status = TRUE, onShelve = TRUE)")
         Utils.changeMysql("insert into manage_house value(null,$ownerId, '$houseAddress', '$type', $capacity, $rent, TRUE, TRUE)")
     }
 
