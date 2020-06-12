@@ -73,7 +73,7 @@ class XTextView(context: Context, attributeSet: AttributeSet): LinearLayout(cont
         return xSpinner?.selectedItem
     }
 
-    fun setXTextContent(content: String){
+    fun setXTextContent(content: String?){
         xContent?.text = Editable.Factory().newEditable(content)
     }
 
